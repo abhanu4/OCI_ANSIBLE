@@ -1,0 +1,14 @@
+--- # This is to demo custom plugin
+
+- name: Demo custom plugin
+  hosts: localhost
+  connection: local
+  vars:
+    myvar:
+      - 1
+      - 3
+      - 5
+      - 7
+  tasks:
+    - debug:
+        msg: " {{ myvar | average }} "

@@ -1,0 +1,11 @@
+--- # calling compartment roles
+
+- name: running playbook to retrieve compartments
+  hosts: localhost
+  connection: local
+  tasks: 
+    - name: Create a compartment under root compartment using parent_compartment_id option
+      oci_compartment:
+         parent_compartment_id: ocid1.tenancy.oc1..aaaaaaaaxyxousxuaqqx5qwri42sepgyegi3rvohs37uqyzsmfa3ptu5cb4q
+         name: AbhiComp
+         description: Compartment created by Abhishek

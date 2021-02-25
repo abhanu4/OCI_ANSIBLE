@@ -1,0 +1,33 @@
+--- # Gathering VCN details available in Root compartment
+
+- name: Gathering VCN details in root compartment
+  hosts: localhost
+  connection: local
+  vars_files:
+    - ./compartment_varList.yml
+    - ./vcn_varList.yml
+  tasks:
+    - name: Gathering VCN details from root compartment
+      oci_vcn_facts:
+        compartment_id: "{{ compmt_ocid }}"
+      register: disVCN
+  
+    - name: setting reqd_VCN variable using set_fact module
+      set_fact:
+        reqd_VCN: "{{ item.display_name }}" 
+      with_items: "{{ disVCN.vcns }}"
+      loop_control:
+        label: "{{ item.display_name }}"
+      when:
+        - item.display_name == vcn_nm
+
+      
+    - name: Displaying result of reqd_VCN as it is available in VCN List
+      debug:
+        var: reqd_VCN
+      when: reqd_VCN is defined
+
+    - name: Displaying message as reqd_VCN doesn't exit
+      debug:
+        msg: "Required VCN not found"
+      when: reqd_VCN is not defined

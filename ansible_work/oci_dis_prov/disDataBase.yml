@@ -1,0 +1,23 @@
+--- # Listing existing databases
+
+- name: Running this playbook to list database
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Gathering facts related to Database available
+      oci_database_facts:
+        compartment_id: ocid1.tenancy.oc1..aaaaaaaaxyxousxuaqqx5qwri42sepgyegi3rvohs37uqyzsmfa3ptu5cb4q
+      register: reqdDB
+    
+    - name: Displaying result
+      debug:
+        var: reqdDB
+      when: reqdDB is defined
+
+    - name: Displaying result
+      debug:
+        msg: "No Database exists in the provided tenancy"
+      when: reqdDB is not defined
+
+
+       

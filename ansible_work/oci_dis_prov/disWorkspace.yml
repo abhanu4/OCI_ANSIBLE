@@ -1,0 +1,23 @@
+--- # Creating a new Workspace for the first time
+
+- name: Creating workspace first time for DIS
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: List workspaces
+      oci_data_integration_workspace_facts:
+        compartment_id: ocid1.compartment.oc1..aaaaaaaa7txka4fmmq4fgv5u5n6rt2wahpourzscixauj2co3cd6ld562v4q
+        name: dis_wrkSpace
+      register: reqdWrkSpace
+
+ 
+    - name: Create workspace
+      oci_data_integration_workspace:
+        display_name: dis_wrkSpace
+        description: This is new DIS workspace
+        compartment_id: ocid1.compartment.oc1..aaaaaaaa7txka4fmmq4fgv5u5n6rt2wahpourzscixauj2co3cd6ld562v4q
+        is_private_network_enabled: true
+        vcn_id: ocid1.vcn.oc1.ap-hyderabad-1.amaaaaaaxyii6nya3o4znh53dhxqrbsc6zjxrtthp3yg76kpafhk2ravlfaq
+        subnet_id: ocid1.subnet.oc1.ap-hyderabad-1.aaaaaaaahtbqkey3vdhsy4lndgtaqwjefmqzhsxfx3fjj77dpradeads7wfa
+        state: 'present'
+      when: reqdWrkSpace is not defined 

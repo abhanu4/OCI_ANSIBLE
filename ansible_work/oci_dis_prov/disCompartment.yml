@@ -1,0 +1,36 @@
+--- # Creating new compartment for oci DIS solution
+
+-  name: creation of compartment for DIS
+   hosts: localhost
+   connection: local
+   tasks:
+     - name: Gathering if required compartment exists in tenancy or Parent compartment
+       oci_compartment_facts:
+         compartment_id: 'ocid1.tenancy.oc1..aaaaaaaaxyxousxuaqqx5qwri42sepgyegi3rvohs37uqyzsmfa3ptu5cb4q'
+         fetch_subcompartments: True
+         name: disComptDev
+       register: reqd_comptmnt
+ 
+     - name: Displaying result of required compartment
+       debug: 
+         var: reqd_comptmnt
+       when: reqd_comptmnt is defined
+       
+     - name: Displaying message as  required compartment is not available
+       debug:
+         msg: "Required compartment is not defined"
+       when: reqd_comptmnt is not defined
+
+
+     - name: Create a compartment under root compartment using parent_compartment_id option
+       oci_compartment:
+         parent_compartment_id: 'ocid1.tenancy.oc1..aaaaaaaaxyxousxuaqqx5qwri42sepgyegi3rvohs37uqyzsmfa3ptu5cb4q'
+         name: disComptDev
+         description: Compartment for DIS dev project
+       register: comptDev
+       when: reqd_comptmnt is not defined
+     
+#     - name: Displaying result of compartment creation
+#       debug:
+#         var: comptDev
+

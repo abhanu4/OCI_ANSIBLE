@@ -1,0 +1,46 @@
+--- # Creating policies for DIS service access to group
+
+- name: Creating policies for DIS resource access
+  hosts: localhost
+  connection: local
+  vars:
+    compartment_id: 'ocid1.tenancy.oc1..aaaaaaaaxyxousxuaqqx5qwri42sepgyegi3rvohs37uqyzsmfa3ptu5cb4q'
+  tasks:
+    - name: Checking if policy already exist
+      oci_policy_facts:
+        compartment_id: "{{ compartment_id }}"
+        name: mypolicy
+      register: reqdPlcy
+
+    - name: setting policy ID
+      set_fact: 
+        policyID: "{{ item.id }}"
+      with_items: "{{ reqdPlcy.policies }}"
+      loop_control:
+        label: reqdPlcy.policies
+            
+   
+    - name: Create a policy
+      oci_policy:
+        name: mypolicy
+        compartment_id: "{{ compartment_id }}"
+        description: 'GroupAdmins can add/remove users in Project-A compartment'
+        policy_document: 'DISPrepolicy.txt'
+      when: reqdPlcy is not defined
+
+    - name: Applying block & rescue concept
+      block:
+        - name: Update a policy
+          oci_policy:
+            compartment_id: "{{ compartment_id }}"
+            id: "{{ policyID }}"
+            description: 'resources and service to DisDevGrp as pre requisite'
+            policy_document: 'DISPrepolicy.txt'
+          when: reqdPlcy is defined
+
+      rescue:
+        - name: This is rescue task in case policy update fails
+          debug:
+            msg: "Updating policy has failed"
+    
+

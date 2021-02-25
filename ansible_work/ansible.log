@@ -1,0 +1,163 @@
+2021-02-17 13:53:02,372 p=30710 u=ansible n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-17 13:53:02,389 p=30710 u=ansible n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-17 13:53:03,300 p=30710 u=ansible n=ansible | PLAY [Creating policies for DIS resource access] ************************************************************************************************************
+2021-02-17 13:53:03,377 p=30710 u=ansible n=ansible | TASK [Gathering Facts] **************************************************************************************************************************************
+2021-02-17 13:53:06,671 p=30710 u=ansible n=ansible | ok: [localhost]
+2021-02-17 13:53:06,694 p=30710 u=ansible n=ansible | TASK [Checking if policy already exist] *********************************************************************************************************************
+2021-02-17 13:53:12,179 p=30710 u=ansible n=ansible | ok: [localhost]
+2021-02-17 13:53:12,191 p=30710 u=ansible n=ansible | TASK [Create a policy] **************************************************************************************************************************************
+2021-02-17 13:53:12,288 p=30710 u=ansible n=ansible | skipping: [localhost]
+2021-02-17 13:53:12,300 p=30710 u=ansible n=ansible | TASK [Update a policy] **************************************************************************************************************************************
+2021-02-17 13:53:17,505 p=30710 u=ansible n=ansible | fatal: [localhost]: FAILED! => {"changed": false, "msg": "Authorization failed or requested resource not found"}
+2021-02-17 13:53:17,506 p=30710 u=ansible n=ansible | PLAY RECAP **************************************************************************************************************************************************
+2021-02-17 13:53:17,507 p=30710 u=ansible n=ansible | localhost                  : ok=2    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2021-02-22 09:33:10,391 p=28205 u=ansible n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-22 09:33:10,413 p=28205 u=ansible n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-22 09:33:11,572 p=28205 u=ansible n=ansible | PLAY [creation of compartment for DIS] **********************************************************************************************************************
+2021-02-22 09:33:11,594 p=28205 u=ansible n=ansible | TASK [Gathering Facts] **************************************************************************************************************************************
+2021-02-22 09:33:14,392 p=28205 u=ansible n=ansible | ok: [localhost]
+2021-02-22 09:33:14,484 p=28205 u=ansible n=ansible | TASK [Gathering if required compartment exists in tenancy or Parent compartment] ****************************************************************************
+2021-02-22 09:33:23,583 p=28205 u=ansible n=ansible | ok: [localhost]
+2021-02-22 09:33:23,607 p=28205 u=ansible n=ansible | TASK [Displaying result of required compartment] ************************************************************************************************************
+2021-02-22 09:33:23,790 p=28205 u=ansible n=ansible | ok: [localhost] => {
+    "reqd_comptmnt": {
+        "changed": false,
+        "compartments": [
+            {
+                "compartment_id": "ocid1.tenancy.oc1..aaaaaaaaxyxousxuaqqx5qwri42sepgyegi3rvohs37uqyzsmfa3ptu5cb4q",
+                "defined_tags": {
+                    "Oracle-Tags": {
+                        "CreatedBy": "satabdi2311@gmail.com",
+                        "CreatedOn": "2021-02-12T13:34:51.220Z"
+                    }
+                },
+                "description": "Compartment for DIS dev project",
+                "freeform_tags": {},
+                "id": "ocid1.compartment.oc1..aaaaaaaa7txka4fmmq4fgv5u5n6rt2wahpourzscixauj2co3cd6ld562v4q",
+                "inactive_status": null,
+                "is_accessible": null,
+                "lifecycle_state": "ACTIVE",
+                "name": "disComptDev",
+                "time_created": "2021-02-12T13:34:51.368000+00:00"
+            }
+        ],
+        "failed": false
+    }
+}
+2021-02-22 09:33:23,804 p=28205 u=ansible n=ansible | TASK [Displaying message as  required compartment is not available] *****************************************************************************************
+2021-02-22 09:33:23,901 p=28205 u=ansible n=ansible | skipping: [localhost]
+2021-02-22 09:33:23,975 p=28205 u=ansible n=ansible | TASK [Create a compartment under root compartment using parent_compartment_id option] ***********************************************************************
+2021-02-22 09:33:24,075 p=28205 u=ansible n=ansible | skipping: [localhost]
+2021-02-22 09:33:24,168 p=28205 u=ansible n=ansible | PLAY RECAP **************************************************************************************************************************************************
+2021-02-22 09:33:24,168 p=28205 u=ansible n=ansible | localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+2021-02-22 09:42:31,688 p=30686 u=ansible n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-22 09:42:31,711 p=30686 u=ansible n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-22 09:42:33,090 p=30686 u=ansible n=ansible | PLAY [creation of compartment for DIS] **********************************************************************************************************************
+2021-02-22 09:42:33,112 p=30686 u=ansible n=ansible | TASK [Gathering Facts] **************************************************************************************************************************************
+2021-02-22 09:42:35,600 p=30686 u=ansible n=ansible | ok: [localhost]
+2021-02-22 09:42:35,691 p=30686 u=ansible n=ansible | TASK [Gathering if required compartment exists in tenancy or Parent compartment] ****************************************************************************
+2021-02-22 09:42:43,577 p=30686 u=ansible n=ansible | ok: [localhost]
+2021-02-22 09:42:43,601 p=30686 u=ansible n=ansible | TASK [Displaying result of required compartment] ************************************************************************************************************
+2021-02-22 09:42:43,770 p=30686 u=ansible n=ansible | ok: [localhost] => {
+    "reqd_comptmnt": {
+        "changed": false,
+        "compartments": [
+            {
+                "compartment_id": "ocid1.tenancy.oc1..aaaaaaaaxyxousxuaqqx5qwri42sepgyegi3rvohs37uqyzsmfa3ptu5cb4q",
+                "defined_tags": {
+                    "Oracle-Tags": {
+                        "CreatedBy": "satabdi2311@gmail.com",
+                        "CreatedOn": "2021-02-12T13:34:51.220Z"
+                    }
+                },
+                "description": "Compartment for DIS dev project",
+                "freeform_tags": {},
+                "id": "ocid1.compartment.oc1..aaaaaaaa7txka4fmmq4fgv5u5n6rt2wahpourzscixauj2co3cd6ld562v4q",
+                "inactive_status": null,
+                "is_accessible": null,
+                "lifecycle_state": "ACTIVE",
+                "name": "disComptDev",
+                "time_created": "2021-02-12T13:34:51.368000+00:00"
+            }
+        ],
+        "failed": false
+    }
+}
+2021-02-22 09:42:43,785 p=30686 u=ansible n=ansible | TASK [Displaying message as  required compartment is not available] *****************************************************************************************
+2021-02-22 09:42:43,886 p=30686 u=ansible n=ansible | skipping: [localhost]
+2021-02-22 09:42:43,901 p=30686 u=ansible n=ansible | TASK [Create a compartment under root compartment using parent_compartment_id option] ***********************************************************************
+2021-02-22 09:42:43,999 p=30686 u=ansible n=ansible | skipping: [localhost]
+2021-02-22 09:42:44,094 p=30686 u=ansible n=ansible | PLAY RECAP **************************************************************************************************************************************************
+2021-02-22 09:42:44,094 p=30686 u=ansible n=ansible | localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+2021-02-22 09:43:24,019 p=31015 u=ansible n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-22 09:43:24,085 p=31015 u=ansible n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-22 09:43:25,188 p=31015 u=ansible n=ansible | PLAY [creation of compartment for DIS] **********************************************************************************************************************
+2021-02-22 09:43:25,207 p=31015 u=ansible n=ansible | TASK [Gathering Facts] **************************************************************************************************************************************
+2021-02-22 09:43:27,679 p=31015 u=ansible n=ansible | ok: [localhost]
+2021-02-22 09:43:27,702 p=31015 u=ansible n=ansible | TASK [Gathering if required compartment exists in tenancy or Parent compartment] ****************************************************************************
+2021-02-22 09:43:35,980 p=31015 u=ansible n=ansible | ok: [localhost]
+2021-02-22 09:43:36,001 p=31015 u=ansible n=ansible | TASK [Displaying result of required compartment] ************************************************************************************************************
+2021-02-22 09:43:36,168 p=31015 u=ansible n=ansible | ok: [localhost] => {
+    "reqd_comptmnt": {
+        "changed": false,
+        "compartments": [
+            {
+                "compartment_id": "ocid1.tenancy.oc1..aaaaaaaaxyxousxuaqqx5qwri42sepgyegi3rvohs37uqyzsmfa3ptu5cb4q",
+                "defined_tags": {
+                    "Oracle-Tags": {
+                        "CreatedBy": "satabdi2311@gmail.com",
+                        "CreatedOn": "2021-02-12T13:34:51.220Z"
+                    }
+                },
+                "description": "Compartment for DIS dev project",
+                "freeform_tags": {},
+                "id": "ocid1.compartment.oc1..aaaaaaaa7txka4fmmq4fgv5u5n6rt2wahpourzscixauj2co3cd6ld562v4q",
+                "inactive_status": null,
+                "is_accessible": null,
+                "lifecycle_state": "ACTIVE",
+                "name": "disComptDev",
+                "time_created": "2021-02-12T13:34:51.368000+00:00"
+            }
+        ],
+        "failed": false
+    }
+}
+2021-02-22 09:43:36,180 p=31015 u=ansible n=ansible | TASK [Displaying message as  required compartment is not available] *****************************************************************************************
+2021-02-22 09:43:36,279 p=31015 u=ansible n=ansible | skipping: [localhost]
+2021-02-22 09:43:36,291 p=31015 u=ansible n=ansible | TASK [Create a compartment under root compartment using parent_compartment_id option] ***********************************************************************
+2021-02-22 09:43:36,384 p=31015 u=ansible n=ansible | skipping: [localhost]
+2021-02-22 09:43:36,467 p=31015 u=ansible n=ansible | PLAY RECAP **************************************************************************************************************************************************
+2021-02-22 09:43:36,467 p=31015 u=ansible n=ansible | localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+2021-02-22 12:15:24,700 p=6810 u=ansible n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-22 12:15:34,165 p=6810 u=ansible n=ansible | localhost | FAILED! => {
+    "changed": false,
+    "msg": "missing required arguments: database_id"
+}
+2021-02-22 12:16:52,569 p=7219 u=ansible n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-22 12:16:53,192 p=7219 u=ansible n=ansible | localhost | FAILED! => {
+    "msg": "The module /home/ansible/ansible_custom_module/oci_database.py was not found in configured module paths"
+}
+2021-02-22 12:17:20,168 p=7357 u=ansible n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-22 12:17:20,679 p=7357 u=ansible n=ansible | localhost | FAILED! => {
+    "msg": "The module /home/ansible/ansible_custom_module/oci_database.py was not found in configured module paths"
+}
+2021-02-22 12:19:18,503 p=7891 u=ansible n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-22 12:19:26,580 p=7891 u=ansible n=ansible | localhost | FAILED! => {
+    "changed": false,
+    "module_stderr": "",
+    "module_stdout": "Importing future library passed\n{'metadata_version': '1.0', 'status': 'preview', 'support': 'community'}\n__main__\nHAS_OCI_PY_SDK True\nType of logger  <class 'logging.Logger'>\nValue of logger  <Logger Database_logger (INFO)>\nupdated module_args {'compartment_id': {'type': 'str', 'required': False}}\n#############################\n{\"msg\": \"New-style module did not handle its own exit\", \"failed\": true}\n",
+    "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error",
+    "rc": 1
+}

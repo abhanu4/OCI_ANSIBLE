@@ -1,0 +1,7 @@
+--- # This task is to retrieve compartment details
+
+    - name: Get details of all the subcompartments under a non-root compartment
+      oci_compartment_facts:
+         compartment_id: ocid1.tenancy.oc1..aaaaaaaaxyxousxuaqqx5qwri42sepgyegi3rvohs37uqyzsmfa3ptu5cb4q
+         fetch_subcompartments: "True"
+         depth: "5"

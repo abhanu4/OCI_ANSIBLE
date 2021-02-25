@@ -1,0 +1,35 @@
+--- # List all objects from a given bucket
+- name: List all objects from a given bucket   
+  hosts: localhost
+  connection: local
+  vars:
+    v_namespace_name: "axadba4rfl4d"
+    v_compartment_id: "ocid1.tenancy.oc1..aaaaaaaaxyxousxuaqqx5qwri42sepgyegi3rvohs37uqyzsmfa3ptu5cb4q"
+  tasks:
+    - name: Get all the buckets in the namespace
+      oci_bucket_facts:
+        namespace_name: "{{ v_namespace_name }}"
+        compartment_id: "{{ v_compartment_id }}"
+      register: ocibuckets
+    
+    - name: Displaying out of bucket
+      debug:
+        var: ocibuckets.buckets
+
+
+    - name: Listing all objects in all buckets
+      oci_object_facts:
+        namespace_name: "{{ v_namespace_name }}"
+        bucket_name: "{{ item.name }}" 
+      with_items: "{{ ocibuckets.buckets }}"
+      register: objlists
+
+  #  - name: Displaying object from buckets
+   #   degug:
+    #    var: objlists
+    #
+    - name: Displaying out of bucket
+      debug:
+        msg: "{{ item.item.name }}"
+      with_items: "{{ objlists.results }} "
+

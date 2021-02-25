@@ -1,0 +1,19 @@
+--- # creating user groups
+
+- name: creating user in OCI
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Create group
+      oci_group:
+            compartment_id: ocid1.tenancy.oc1..aaaaaaaaxyxousxuaqqx5qwri42sepgyegi3rvohs37uqyzsmfa3ptu5cb4q
+            name: 'AnsibleTestGroup'
+            description: 'Group for Testing Ansible Module'
+            users: ['Abhi','Sat']
+            freeform_tags:
+                 group_name: 'designer'
+            defined_tags:
+                product:
+                  type: 'server'
+            state: 'present'
+

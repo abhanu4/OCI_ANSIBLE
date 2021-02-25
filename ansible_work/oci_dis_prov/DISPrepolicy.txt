@@ -1,0 +1,7 @@
+allow group DisDevGrp to inspect compartments in tenancy
+allow service dataintegration to use virtual-network-family in compartment disComptDev
+allow group DisDevGrp to manage dis-workspaces in compartment disComptDev
+allow group DisDevGrp to manage dis-work-requests in compartment disComptDev
+allow group DisDevGrp to use virtual-network-family in compartment disComptDev
+allow group DisDevGrp to manage tag-namespaces in compartment disComptDev
+allow group DisDevGrp to use object-family in compartment disComptDev

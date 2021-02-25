@@ -1,0 +1,29 @@
+--- # Writing this playbook to send notification to slack channel
+
+- name: Send notification to slcak
+  hosts: target1
+  become: yes
+  connection: local
+  vars:
+      myvars:
+        - 1
+        - 2
+        - 5
+        - 7
+  tasks:
+    - name: Installing httpd
+      ping:
+      notify: installed_ansible
+
+
+  handlers:
+
+    - name: installed_ansible
+      slack:
+        token: T01LAUG3T7Y/B01LEKJHJ6R/DdyISLf80UpqxH6OkVyTkBz4
+        channel: "#ansible"
+        msg: "Httpd got installed successfully"
+
+
+
+      

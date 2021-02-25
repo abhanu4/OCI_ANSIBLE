@@ -1,0 +1,9 @@
+--- # This is my playbook using host vars folder
+- name: Running to gatherfacts using host vars
+  hosts: target
+  connection: ssh
+  tasks:
+    - name:  running gather facts module
+      gather_facts:
+
+    

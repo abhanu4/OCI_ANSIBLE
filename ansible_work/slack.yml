@@ -1,0 +1,11 @@
+--- # Sending notification to slack
+
+- name: sending notifcation
+  hosts: ansible
+  connection: local
+  tasks:
+    - name: send notification
+      slack:
+        token: T01LAUG3T7Y/B01LEKJHJ6R/DdyISLf80UpqxH6OkVyTkBz4
+        channel: "#ansible"
+        msg: " My first message" 

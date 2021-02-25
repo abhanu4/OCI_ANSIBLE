@@ -1,0 +1,12 @@
+--- # Creating policies for DIS service access to group
+
+- name: Creating policies for DIS resource access
+  hosts: localhost
+  connection: local
+  tasks:
+     - name: Update a policy with new privileges post Workspace creation 
+       oci_policy:
+         id: ocid1.policy.oc1..aaaaaaaauqyeygcls2dhb3o4lshgawunkzm5cvh3s3rn7yu3rmivvy2val7a
+         description: 'resources and services to DisDevGrp after workspace creation'
+         policy_document: 'DISPostpolicy.txt'
+

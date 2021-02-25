@@ -1,0 +1,17 @@
+--- # Finding user API key
+
+- name: Finding API Key
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Get details of all the api signing keys of the specified user
+      oci_api_key_facts:
+        user_id: "ocid1.user.oc1..aaaaaaaa2j4heybu2kw3pn7f6o6szdluf66jazwxy6zpqo7avevaqm3ppqhq"
+      register: result
+      
+    - name: displaying output of the command
+      debug:
+        var: result.api_keys
+
+    - name: Displaying output using JSON command
+      debug: "msg=  '{{ result.stdout }}'"

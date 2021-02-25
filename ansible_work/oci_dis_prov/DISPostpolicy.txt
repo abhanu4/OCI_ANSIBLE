@@ -1,0 +1,2 @@
+allow group DisDevGrp  to use object-family in compartment disComptDev
+allow any-user to use buckets in compartment disComptDev where ALL {request.principal.type='disworkspace', request.principal.id='ocid1.disworkspace.oc1.ap-hyderabad-1.amaaaaaaxyii6nyae4gew4xvbb44tsy3oduvbjwbobexwe4whoivqrdyuzba'}

@@ -1,0 +1,35 @@
+--- # Creating group & its user for DIS operation
+
+- name: Creating group & users
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Checking on Group name already exist or not
+      oci_group_facts:
+        name: DisDevGrp
+      register: reqdGrp
+
+    - name: Displaying result if group already exist
+      debug:
+        var: reqdGrp
+      when: reqdGrp.groups | length > 0
+  
+    - name: Displaying result if group doesn't exist
+      debug:
+        msg: "Group doesn't exist"
+      when: reqdGrp.groups | length == 0
+    
+    
+    - name: creating group for DIS operation
+      oci_group:
+            compartment_id: ocid1.tenancy.oc1..aaaaaaaaxyxousxuaqqx5qwri42sepgyegi3rvohs37uqyzsmfa3ptu5cb4q
+            name: 'DisDevGrp'
+            description: 'Group for Testing Ansible Module'
+            users: ['arajbhan','jschuck']
+            state: 'present'
+      when: reqdGrp.groups | length == 0
+
+
+
+
+

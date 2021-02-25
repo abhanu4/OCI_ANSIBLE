@@ -1,0 +1,23 @@
+--- # Creating user under DevDisGrp
+
+- name: Creating user under disDevGrp
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Checking if provided user already exist
+      oci_user_facts:
+        name: 'jonDIS'
+      register: reqdUser
+
+
+    
+    - name: Create User with ui password and  group memberships
+      oci_user:
+        compartment_id: ocid1.tenancy.oc1..aaaaaaaaxyxousxuaqqx5qwri42sepgyegi3rvohs37uqyzsmfa3ptu5cb4q
+        name: 'jonDIS'
+        description: 'Jon DIS developer'
+        user_groups: ['DisDevGrp'] 
+        create_or_reset_ui_password: True
+        state: 'present'
+      when: reqdUser is not defined
+
