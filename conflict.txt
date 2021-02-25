@@ -1,0 +1,4 @@
+<<<<<<< HEAD
+I am doing Apache Kafka
+I am currently employed in oracle.
+
